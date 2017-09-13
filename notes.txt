@@ -1,0 +1,2 @@
+Mainstream.xml -> streamAdded
+    -> playing an FLV
