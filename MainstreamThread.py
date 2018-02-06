@@ -1,10 +1,10 @@
 import threading;
 import time;
-import playsound;
+from playsound import playsound;
 
 def playStream(streamFile):
     print("Playing file {}".format(streamFile));
-    playsound.playsound(streamFile, False);
+    threading.Thread(target=playsound, args=(streamFile,)).start();
     
 
 class MainstreamThread(threading.Thread):

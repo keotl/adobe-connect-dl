@@ -1,2 +1,46 @@
 Mainstream.xml -> streamAdded
     -> playing an FLV
+
+
+PDF (download links in indexstream.xml)
+https://classevirtuelle.ulaval.ca/system/download?download-url=/_a7/pfyf4w3jj89c/source/&name=1-introduction.pdf
+Direct link: (Requires SSO authentication)
+https://classevirtuelle.ulaval.ca/pfyf4w3jj89c/source/1-introduction.pdf?download=true
+Display in browser
+https://classevirtuelle.ulaval.ca/pfyf4w3jj89c/source/1-introduction.pdf
+
+
+PDF interaction
+===============
+ftcontent1.xml: memento (contains page number, canvas to page ration, encoded data) (possibly pen input?)
+ftcontent1.xml: handleRecordingCursorDataMessage (likely cursor (arrow) location?)
+
+
+
+Example pdf tk
+==============
+
+    import pypdfocr.pypdfocr_gs as pdfImg
+    from PIL import Image, ImageTk
+    import Tkinter as tk
+    import ttk
+
+    import glob, os
+
+    root=tk.Tk()
+
+    __f_tmp=glob.glob(pdfImg.PyGs({}).make_img_from_pdf("\tmp\test.pdf")[1])[0]
+    #                             ^ this is needed for a "default"-Config
+    __img=Image.open(__f_tmp)
+
+    __tk_img=ImageTk.PhotoImage(__img)
+
+    ttk.Label(root, image=__tk_img).grid()
+
+    __img.close()
+    os.remove(__f_tmp)
+
+    root.mainloop()
+
+convert to png (ImageMagick)
+convert -density 300 1-introduction.pdf
